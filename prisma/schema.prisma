@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Pos {
+  id                  Int      @id @default(autoincrement())
+  batteryPercentage   String
+  ipAddress           String
+  location            String
+  model               String
+  connectedToInternet Boolean
+  canReachInternet    Boolean
+  typeOfConnection    String
+  carrierName         String
+  country             String
+  deviceName          String
+  brandName           String
+  manufacturer        String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("pos")
+}
